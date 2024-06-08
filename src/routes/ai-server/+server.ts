@@ -1,20 +1,10 @@
-function transformTextToHtml(inputText:string) {
-  // Replace text between double asterisks with bold tags
-  let transformedText = inputText.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-  // Replace newlines with break tags
-  transformedText = transformedText.replace(/##(.*?)\n/g, '<b>$1</b><br>');
-  transformedText = transformedText.replace(/\n/g, '<br>');
-  return transformedText;
-}
-
-
-
 import {
     GoogleGenerativeAI,
     HarmCategory,
     HarmBlockThreshold,
   } from "@google/generative-ai"
   import {SECRET_GEMINI_API_KEY} from '$env/static/private'
+  import { transformTextToHtml } from "$lib/utils.js";
 import { json } from "@sveltejs/kit";
   const genAI = new GoogleGenerativeAI(SECRET_GEMINI_API_KEY);
   
